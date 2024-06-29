@@ -1,0 +1,3 @@
+# Write your MySQL query statement below
+select Department,Employee,Salary from (select e.name as Employee,d.name as Department,e.salary as Salary ,dense_rank() over(partition by e.departmentId order by e.salary desc) as rnk from employee e left join department d on e.departmentId=d.id) x where x.rnk<4
+-- select e.name as Employee,d.name as Department,e.salary as Salary ,dense_rank() over(partition by e.departmentId order by e.salary ) as rnk from employee e left join department d on e.departmentId=d.id
